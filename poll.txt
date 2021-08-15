@@ -1,6 +1,7 @@
-Baburao 182 
-Shyam 400 
-Raju 820 
-ram 1 
-afaf 2 
-qewfqef 0 
+Raju 1 
+Shyam 0 
+BabuRao 2 
+Anuradha 0 
+NanjiBhai 0 
+Anjali 1 
+Nanji 0 

@@ -11,15 +11,13 @@ def home():
 @app.route('/add',methods = ['POST'])
 def add():  
     data = request.get_json()
-    print(data)
     f = open("poll.txt", mode='a', encoding='utf-8')
     f.write((data['name']+" 0 \n"))
-    return {"Message":"data added."}
+    return {"Message":"data added.", "status":200}
 
 @app.route('/vote',methods = ['POST'])
 def vote():
       resdata = request.get_json()
-      print(resdata)
 
       if (202012120 - int(resdata['voterId']) < 0 or 202012120 - int(resdata['voterId']) > 120):
             return {"message" : "voterID Invalid.", "response" : 202}
@@ -67,17 +65,16 @@ def winner():
             splitData = candidates.split(" ")
             dataArray.append(splitData)
       
-      print(dataArray[0][0])
-      
       winner = 0
       setArray  = []
       for data in dataArray:
-            if (int(data[1]) > winner):
+            if(int(data[1]) > winner):
                   winner = int(data[1])
                   if len(setArray) > 0 :
                         setArray.pop()
                   setArray.append(data)
-                  
+      if(winner == 0):
+            return {"message" : "no winner", "response" : 201}
       return jsonify(setArray)
 
 @app.route('/voteSummary',methods = ['GET'])
@@ -89,7 +86,7 @@ def voteSummary():
         temp = data.split()
       #   print(temp)
         newArray.append({"name" : temp[0], "votes" : int(temp[1])})
-      print(newArray)
+
       return jsonify(newArray)
 
 if __name__ =='__main__':
