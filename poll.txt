@@ -1,7 +1,4 @@
-Raju 1 
+Raju 0 
 Shyam 0 
-BabuRao 2 
+BabuRao 0 
 Anuradha 0 
-NanjiBhai 0 
-Anjali 1 
-Nanji 0 

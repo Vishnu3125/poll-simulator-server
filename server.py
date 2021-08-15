@@ -9,7 +9,7 @@ def home():
     return "This is poll-simulator app server";
 
 @app.route('/add',methods = ['POST'])
-def add():  
+def add():
     data = request.get_json()
     f = open("poll.txt", mode='a', encoding='utf-8')
     f.write((data['name']+" 0 \n"))
@@ -55,7 +55,7 @@ def vote():
       return {"message" : "Your vote is sucessfully added, Thanks for voting", "response" : 200}
 
 @app.route('/winner',methods = ['GET'])
-def winner():  
+def winner():
       f = open("poll.txt", mode='r', encoding='utf-8')
       file = f.readlines()
       f.close()
@@ -68,7 +68,9 @@ def winner():
       winner = 0
       setArray  = []
       for data in dataArray:
-            if(int(data[1]) > winner):
+            if (int(data[1]) == winner and winner != 0):
+                  return {"message" : "It's Tie", "response" : 201}
+            elif(int(data[1]) > winner):
                   winner = int(data[1])
                   if len(setArray) > 0 :
                         setArray.pop()
