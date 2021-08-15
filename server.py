@@ -22,8 +22,10 @@ def vote():
       print(resdata)
 
       if (202012120 - int(resdata['voterId']) < 0 or 202012120 - int(resdata['voterId']) > 120):
-            print("invalid")
-            return {"message" : "voterID Invalid.", "response" : 204}
+            return {"message" : "voterID Invalid.", "response" : 202}
+      
+      if (resdata['selectedCandidate'] == 0):
+            return {"message" : "Please select any candidate to vote", "response" : 203}
 
       v = open("voters.txt", mode='a+', encoding='utf-8')
       v.seek(0)
@@ -31,7 +33,7 @@ def vote():
 
       for voters in voterfile:
             if voters == (resdata['voterId'] + " \n"):
-                  return {"message" : "This voterID already voted.", "response" : 202}
+                  return {"message" : "This voterID already voted.", "response" : 204}
       # print(voterfile)
       
       v.write(resdata['voterId'] + " \n")
@@ -52,7 +54,7 @@ def vote():
       for data in dataArray:
             f.write((data[0] + " " + data[1] + " \n"))
 
-      return "Welcome %s"
+      return {"message" : "Your vote is sucessfully added, Thanks for voting", "response" : 200}
 
 @app.route('/winner',methods = ['GET'])
 def winner():  
