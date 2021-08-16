@@ -9,7 +9,7 @@ poll-simulator server for rest api
 
 ## Run this backend server by:
 #### clone this repo into a local directory by
-#### `git clone `
+#### `git clone https://github.com/Vishnu3125/poll-simulator-server.git`
 #### Navigate into that directory
 #### `cd poll-simulator-server`
 #### then install all libraires by
