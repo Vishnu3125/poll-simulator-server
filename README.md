@@ -1,13 +1,16 @@
 # poll-simulator-server
 poll-simulator server for rest api  
 
-> Candidates can vote here their favourite candidate and view result.
+> This is just an API server intended to run for [poll-simulator](https://github.com/Vishnu3125/poll-simulator-server.git)
+
+> This Server run on Python3 and Flask library
 
 ## Requirement
 - Make sure python3 is installed
+
 - Make sure all required libraries are installed
 
-## Run this backend server by:
+## How to Run this server
 #### clone this repo into a local directory by
 #### `git clone https://github.com/Vishnu3125/poll-simulator-server.git`
 #### Navigate into that directory
