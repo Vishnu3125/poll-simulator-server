@@ -1,4 +1,3 @@
-Raju 0 
-Shyam 0 
+Raju 1 
+Shyam 2 
 BabuRao 0 
-Anuradha 0 
