@@ -1,7 +1,7 @@
 # poll-simulator-server
 poll-simulator server for rest api  
 
-> This is just an API server intended to run for [poll-simulator](https://github.com/Vishnu3125/poll-simulator-server.git)
+> This is just an API server intended to run for [poll-simulator](https://github.com/Vishnu3125/poll-simulator.git)
 
 > This Server run on Python3 and Flask library
 
