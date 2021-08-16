@@ -1,3 +1,5 @@
-Raju 1 
-Shyam 2 
-BabuRao 0 
+Raju 10 
+Shyam 20 
+BabuRao 14 
+NanjiBhai 47 
+Anjali 10 
