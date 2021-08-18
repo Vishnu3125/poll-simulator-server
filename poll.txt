@@ -1,5 +1,4 @@
 Raju 10 
-Shyam 20 
+Shyam 22 
 BabuRao 14 
 NanjiBhai 47 
-Anjali 10 

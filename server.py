@@ -30,42 +30,42 @@ def home():
 @app.route('/add',methods = ['POST'])
 def add():
       data = request.get_json()
-      candidatesArray.append({"name" : data['name'], "votes" : 0})
-      f = open("poll.txt", mode='a', encoding='utf-8')
-      f.write((data['name']+" 0 \n"))
-      f.close()
-      return {"Message":"data added.", "status":200}
+      if (int(data['pin']) == 214365):
+            candidatesArray.append({"name" : data['name'], "votes" : 0})
+            f = open("poll.txt", mode='a', encoding='utf-8')
+            f.write((data['name']+" 0 \n"))
+            f.close()
+            return {"Message":"data added.", "status":200}
+      return {"Message":"Pin invalid", "status":201}
 
 @app.route('/vote',methods = ['POST'])
 def vote():
       resdata = request.get_json()
+      print(resdata)
+      if (resdata['voterId'] == ''):
+            return {"message" : "Please Provide voterID to proceed further.", "response" : 202}
 
-      if (202012120 - int(resdata['voterId']) < 0 or 202012120 - int(resdata['voterId']) > 120):
+      if (int(resdata['voterId']) > 202012120
+          or int(resdata['voterId']) < 202012000):
             return {"message" : "voterID Invalid.", "response" : 202}
-      
-      if (resdata['selectedCandidate'] == 0):
-            return {"message" : "Please select any candidate to vote", "response" : 203}
-
 
       for voter in votersArray:
             if voter == (int(resdata['voterId'])):
                   return {"message" : "This voterID already voted.", "response" : 204}
-      # print(voterfile)
-      
+
+      if (resdata['selectedCandidate'] == 0):
+            return {"message" : "Please select any candidate to vote", "response" : 203}
+
       votersArray.append(int(resdata['voterId']))
-      v = open("voters.txt", mode='a+', encoding='utf-8')
-      v.write(resdata['voterId'] + " \n")
-      v.close()
-      
+      with open("voters.txt", mode='a+', encoding='utf-8') as v:
+            v.write(resdata['voterId'] + " \n")
       for candidate in candidatesArray:
             if(candidate['name'] == resdata['selectedCandidate']):
                   candidate['votes'] = candidate['votes'] + 1;
 
-      p = open("poll.txt", mode='w', encoding='utf-8')
-      for candidate in (candidatesArray):
-            p.writelines(candidate['name']+" "+str(candidate['votes'])+" \n")
-      p.close()
-      
+      with open("poll.txt", mode='w', encoding='utf-8') as p:
+            for candidate in (candidatesArray):
+                  p.writelines(candidate['name']+" "+str(candidate['votes'])+" \n")
       return {"message" : "Your vote is sucessfully added, Thanks for voting", "response" : 200}
 
 @app.route('/winner',methods = ['GET'])
